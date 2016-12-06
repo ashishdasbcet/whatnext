@@ -1,0 +1,20 @@
+body
+{
+  padding-top: 50px;
+}
+
+.body_img {
+  background-image: url('../images/bg.jpg');
+  background-position: 0px 0px;
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+.cur_point
+{
+  cursor: pointer;
+}

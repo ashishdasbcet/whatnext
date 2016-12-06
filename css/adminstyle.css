@@ -1,0 +1,19 @@
+.wrapper {width: 1080px; margin: auto;}
+
+.header
+{
+  background-color: #9ed715;
+  height: 50px;
+  width: auto;;
+  border-bottom-width: 5px;
+  border-bottom-style: groove;
+  border-bottom-color: #f60;
+}
+
+.right
+{
+  background-color: #0a163c ;
+  color: #fff;
+  height: 618px;
+  width: auto;
+  }
