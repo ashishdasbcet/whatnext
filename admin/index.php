@@ -28,11 +28,11 @@
         <div class="form-group">
           <h2>Log In</h2><br><br>
           <label for="user1">User ID</label>
-          <input type="user" name="user" class="form-control" id="email1" placeholder="User Id">
+          <input type="user" name="user" class="form-control" id="user" placeholder="User Id">
           </div>
         <div class="form-group">
           <label for="Password1">Password</label>
-          <input type="password" name="password" class="form-control" id="password1" placeholder="Password">
+          <input type="password" name="password" class="form-control" id="password" placeholder="Password">
         </div>
         <button type="submit" name="submit" class="btn btn-default">Submit</button>
       </form>
@@ -45,11 +45,19 @@
 
 if(isset($_POST['submit']))
 {
-  $con=mysqli_connect("localhost","root","","universities");
-  $sql="SELECT pass from login where userid=$_GET[user]";
-  $result=mysqli_fetch_assoc($con,$sql);
-
-  if ($result==$_GET['password'])
+	//echo $_POST['user'];
+	$user = $_POST['user'];
+	$pass = $_POST['password'];
+  $con = mysqli_connect("localhost","root","","universities");
+  $sql="SELECT * from login where userid='$user' and pass = '$pass'";
+  //echo $sql;
+    if (!$con) {
+    die("Connection failed: " . mysqli_connect_error());
+	}
+  $result = mysqli_query($con, $sql);
+	$count =  mysqli_num_rows($result);
+	//echo "count".$count;
+  if ( $count > 0)
   {
     echo "<script>window.open('main.php','_self')</script>";
   }
@@ -57,7 +65,7 @@ if(isset($_POST['submit']))
   {
     echo "<script>alert('User Id or Password is Incorrect')</script>";
   }
-
+	mysqli_close($conn);
 }
 
 ?>
