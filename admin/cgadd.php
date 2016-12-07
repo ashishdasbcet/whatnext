@@ -118,20 +118,22 @@
   <?php
   $con=mysqli_connect("localhost","root","","universities");
   $sql1="SELECT * FROM un_details";
-  $run_query=mysqli_query($con,$sql1);
-  for($row_id=mysqli_fetch_array($run_query);$row_id>0;$row_id++)
+  $result=mysqli_query($con,$sql1);
+  $row=mysqli_fetch_assoc($result);
+  $count =  mysqli_num_rows($result);
+  for ($i=0; $i <$count ; $i++)
   {
-    $univ_name=array('un'=>$row_id['un_name']);
+    $univ_name = array('un' => $row['un_name']); //its provide only one data
   }
-   ?>
 
+  ?>
 
   <div class="form-group">
     <label for="inputPassword3" class="col-sm-2 control-label">Affiliated from following University</label>
     <div class="col-sm-10">
       <select class="form-control" name="add_cg_reg" >
         <option value="null">Select a University</option>
-        <option><?php echo $univ_name['un'] ?></option>
+        <option><?php echo  $univ_name['un'];?></option>
       </select>
     </div>
   </div>
